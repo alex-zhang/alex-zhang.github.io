@@ -65,50 +65,15 @@
       
         <p>DPI  , Dot Per Inch的缩写。每英寸所打印的点数或线数，用来表示打印机打印分辨率。这是衡量打印机打印精度的主要参数之一。一般来说，该值越大，表明打印机的打印精度越高。</p>
 <p>DPI实际上就是描述单位英寸上的点数。在做个性化印刷的RIA应用中，可能需要用到DPI。 在flash中的Capabilities类中可以访问到客户端的屏幕DPI设置，但是一般你得到的都是72dpi，不管你怎么设置都没有用。</p>
-<p>在做RIA应用时，是怎么遇到遇到的DPI的呢？比如，数据库里需要用物理尺寸来描述一个产品的大小，供网站和生产同时使用，这时数据库里有这么一条记录，有一个图片他是 300mm X 250mm，它需要显示到一个flash的容器里面去，容器的大小是 450pix x 300pix 大小，这时要将这张图片完全等比例填满真个容器。</p>
-<pre><code>pic 物理尺寸：
-    width :300mm ;
-    height: 250mm;
 
-container屏幕尺寸:
-    width :450pix;
-    height：300pix;
-</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="code"><pre><span class="keyword">var</span> pWH:<span class="built_in">Number</span> = <span class="number">300</span>/<span class="number">250</span>;  
-<span class="keyword">var</span> cWH:<span class="built_in">Number</span> = <span class="number">450</span>/<span class="number">300</span>;  
-<span class="keyword">if</span>(pWH &gt;= cWH) {  
-    	pic.width = <span class="number">450</span>;  
-    	pic.height = <span class="number">450</span>/pWH;  
-}  
-<span class="keyword">else</span> {  
-    	pic.height = <span class="number">300</span>;  
-    	pic.width = <span class="number">300</span>*pWH;  
-}
-</pre></td></tr></table></figure>
-
-<p>这时，图片等比列填满容器时的 尺寸是 360pix X 300pix,而屏幕的DPI是96DPI也就是说，在用户的屏幕上
-1 inch 的长度为96pix<code>25.4 mm = 96pix</code>。所以这时图片的 物理宽度 300mm在屏幕上的长度是 360pix，由此可以计算出此时该图片的 DPI精度为：<code>360/300*25.4 = 30.48DPI</code> 而它原来的DPI是：25.4DPI
-所以说，而一张图片在flash中显示时，它的精度本来就是屏幕的DPI，96，在换算成具体的物理尺寸时也是安屏幕的DPI来算的，比如这张原始大小为 300 X 250 pix的照片，在屏幕96DPI下放到数据库时的物理尺寸应该是<code>25.4*300/96 mm</code></p>
-<p>所以总结，一个具体的打印对象在一个已知的 D 的DPI环境中，它的DPI应该算：</p>
-<pre><code>DPI = 实际 width (pix )/ 原始 width (pix) * D;
-
-物理尺寸 width (mm)= 25.4 /D *实际 width (pix ) ;
-
-显示尺寸 width(pix) = D / 25.4 * 物理 width (mm)
-</code></pre>
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2014/03/01/dpi-在做-ria时的换算/#more" class="more-link">Read More</a>
+          </div>
         
         
       
