@@ -53,6 +53,44 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-03-01T10:38:41.000Z"><a href="/2014/03/01/游戏中的特效/">3月 1 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/03/01/游戏中的特效/">游戏中的特效</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>from: <a href="http://www.verydemo.com/demo_c352_i5869.html" target="_blank">http://www.verydemo.com/demo_c352_i5869.html</a></p>
+<p>特效是游戏中增加交互印象的很重要一方面，一个好的特效系统能够很大程度上提高游戏的特色。这尤其体现在动作游戏上，比如God of War，Ninja Gaiden等系列中的特效效果就很出彩。这里简单总结一下自己所了解的一些游戏中较为常见的特效：</p>
+<p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/03/01/游戏中的特效/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-03-01T04:44:01.000Z"><a href="/2014/03/01/ribbontrail-effect-in-starling/">3月 1 2014</a></time>
       
       
@@ -63,14 +101,7 @@
     </header>
     <div class="entry">
       
-        <p>Starling Extensions 还没有于是写了个，先上Demo</p>
-<object width="100%" height="550" align="left" data="http://wiki.starling-framework.org/_media/extensions/ribbontraildemo.swf" type="application/x-shockwave-flash">
-<param value="direct" name="wmode">
-<param value="wmode=direct" name="FlashVars">
-The<a href="http://www.adobe.com/products/flashplayer/" target="_blank">Adobe Flash Plugin</a>is needed to display this content.
-</object>
-
-
+        <p>基于Starling实现的一个拖尾特效</p>
 <p>顶点数据格式如下:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
@@ -101,8 +132,45 @@ ribbonTrail<span class="preprocessor">.colorRatio</span> = <span class="number">
 addChild(ribbonTrail)<span class="comment">;</span>
 
 
-//follow the target pos, alpha , color
+//follow the target pos, alpha, color when ticking.
 ribbonTrail<span class="preprocessor">.floowTo</span>(x0, y0, x1, y1, alpha, color)<span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<p>缓动的算法由<code>TrailSegment</code>类实现</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">tweenTo</span><span class="params">(preTrailSegment:TrailSegment, passedTime:Number)</span><span class="type">:void</span>
+{</span>
+	<span class="keyword">var</span> movingRatio:Number = ribbonTrail.movingRatio;
+	
+	<span class="comment">//near the target.</span>
+	x0 = x0 + (preTrailSegment.x0 - x0) * movingRatio;
+	y0 = y0 + (preTrailSegment.y0 - y0) * movingRatio;
+
+	x1 = x1 + (preTrailSegment.x1 - x1) * movingRatio;
+	y1 = y1 + (preTrailSegment.y1 - y1) * movingRatio;
+	
+	<span class="comment">//percent of pre alpha.</span>
+	alpha = preTrailSegment.alpha * ribbonTrail.alphaRatio;
+	
+	<span class="comment">//just percent of pre color.</span>
+	color = preTrailSegment.color * ribbonTrail.colorRatio;
+}
 </pre></td></tr></table></figure>
 
 <p><a href="https://github.com/alex-zhang/Starling-Extension-Ribbon-Trail" target="_blank">source code</a></p>
@@ -111,6 +179,10 @@ ribbonTrail<span class="preprocessor">.floowTo</span>(x0, y0, x1, y1, alpha, col
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2014/03/01/ribbontrail-effect-in-starling/#more" class="more-link">Read More</a>
+          </div>
         
         
       
@@ -137,13 +209,20 @@ ribbonTrail<span class="preprocessor">.floowTo</span>(x0, y0, x1, y1, alpha, col
   </form>
 </div>
 
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a style="color:#258FB8" href="http://chaimzane.iteye.com/" title="Chaimzane's Blog"><b>Chaimzane's Blog</b></a></li>
+</ul>
+</div>
+
   
 
   
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Starling Stage3D Ribbon/" style="font-size: NaNpx;">Starling Stage3D Ribbon</a>
+    <a href="/tags/Game/" style="font-size: NaNpx;">Game</a><a href="/tags/RibbonTrail/" style="font-size: NaNpx;">RibbonTrail</a>
   </div>
 </div>
 

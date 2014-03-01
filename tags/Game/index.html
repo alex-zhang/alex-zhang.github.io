@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Starling Stage3D Ribbon | Alex&#39;s Blog</title>
+  <title>Game | Alex&#39;s Blog</title>
   <meta name="author" content="Alex Zhang">
   
   <meta name="description" content="Web Flash IOS Andriod Flex js Cocos2D 3D Stage3D AGAL">
@@ -43,7 +43,7 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">Starling Stage3D Ribbon</h2>
+<h2 class="archive-title tag">Game</h2>
 
 
   
@@ -53,64 +53,27 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-03-01T04:44:01.000Z"><a href="/2014/03/01/ribbontrail-effect-in-starling/">3月 1 2014</a></time>
+        <time datetime="2014-03-01T10:38:41.000Z"><a href="/2014/03/01/游戏中的特效/">3月 1 2014</a></time>
       
       
   
-    <h1 class="title"><a href="/2014/03/01/ribbontrail-effect-in-starling/">RibbonTrail Effect in Starling</a></h1>
+    <h1 class="title"><a href="/2014/03/01/游戏中的特效/">游戏中的特效</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>Starling Extensions 还没有于是写了个，先上Demo</p>
-<object width="100%" height="550" align="left" data="http://wiki.starling-framework.org/_media/extensions/ribbontraildemo.swf" type="application/x-shockwave-flash">
-<param value="direct" name="wmode">
-<param value="wmode=direct" name="FlashVars">
-The<a href="http://www.adobe.com/products/flashplayer/" target="_blank">Adobe Flash Plugin</a>is needed to display this content.
-</object>
-
-
-<p>顶点数据格式如下:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre><span class="number">0</span> - <span class="number">2</span> - <span class="number">4</span> - <span class="number">8</span> - <span class="number">9</span>
-| <span class="regexp">/ | /</span> | <span class="regexp">/ | /</span> |
-<span class="number">1</span> - <span class="number">3</span> - <span class="number">5</span> - <span class="number">7</span> - <span class="number">10</span>
-</pre></td></tr></table></figure>
-
-<p>和Starling中Quad的顶点结构不一样， 他是连续的。</p>
-<figure class="highlight actionscrit"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-</pre></td><td class="code"><pre>//init ribbonTrail
-ribbonTrail = new RibbonTrail(textures[<span class="number">0</span>], <span class="number">50</span>)<span class="comment">;</span>
-ribbonTrail<span class="preprocessor">.isPlaying</span> = true<span class="comment">;</span>
-ribbonTrail<span class="preprocessor">.movingRatio</span> = <span class="number">0.4</span><span class="comment">;</span>
-ribbonTrail<span class="preprocessor">.alphaRatio</span> = <span class="number">0.95</span><span class="comment">;</span>
-ribbonTrail<span class="preprocessor">.colorRatio</span> = <span class="number">1</span><span class="comment">;</span>
-addChild(ribbonTrail)<span class="comment">;</span>
-
-
-//follow the target pos, alpha , color
-ribbonTrail<span class="preprocessor">.floowTo</span>(x0, y0, x1, y1, alpha, color)<span class="comment">;</span>
-</pre></td></tr></table></figure>
-
-<p><a href="https://github.com/alex-zhang/Starling-Extension-Ribbon-Trail" target="_blank">source code</a></p>
-
+        <p>from: <a href="http://www.verydemo.com/demo_c352_i5869.html" target="_blank">http://www.verydemo.com/demo_c352_i5869.html</a></p>
+<p>特效是游戏中增加交互印象的很重要一方面，一个好的特效系统能够很大程度上提高游戏的特色。这尤其体现在动作游戏上，比如God of War，Ninja Gaiden等系列中的特效效果就很出彩。这里简单总结一下自己所了解的一些游戏中较为常见的特效：</p>
+<p>
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2014/03/01/游戏中的特效/#more" class="more-link">Read More</a>
+          </div>
         
         
       
@@ -137,13 +100,20 @@ ribbonTrail<span class="preprocessor">.floowTo</span>(x0, y0, x1, y1, alpha, col
   </form>
 </div>
 
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a style="color:#258FB8" href="http://chaimzane.iteye.com/" title="Chaimzane's Blog"><b>Chaimzane's Blog</b></a></li>
+</ul>
+</div>
+
   
 
   
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Starling Stage3D Ribbon/" style="font-size: NaNpx;">Starling Stage3D Ribbon</a>
+    <a href="/tags/Game/" style="font-size: NaNpx;">Game</a><a href="/tags/RibbonTrail/" style="font-size: NaNpx;">RibbonTrail</a>
   </div>
 </div>
 

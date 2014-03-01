@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>游戏中的特效 | Alex&#39;s Blog</title>
+  <meta name="author" content="Alex Zhang">
+  
+  <meta name="description" content="Web Flash IOS Andriod Flex js Cocos2D 3D Stage3D AGAL">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="游戏中的特效"/>
+  <meta property="og:site_name" content="Alex&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Alex&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Alex&#39;s Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+  	<li><a href="https://github.com/alex-zhang" style="color:#258FB8"><b>My Github</a></a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-01T10:38:41.000Z"><a href="/2014/03/01/游戏中的特效/">3月 1 2014</a></time>
+      
+      
+  
+    <h1 class="title">游戏中的特效</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>from: <a href="http://www.verydemo.com/demo_c352_i5869.html" target="_blank">http://www.verydemo.com/demo_c352_i5869.html</a></p>
+<p>特效是游戏中增加交互印象的很重要一方面，一个好的特效系统能够很大程度上提高游戏的特色。这尤其体现在动作游戏上，比如God of War，Ninja Gaiden等系列中的特效效果就很出彩。这里简单总结一下自己所了解的一些游戏中较为常见的特效：</p>
+<p><a id="more"></a></p>
+<h2 id="-">公告板</h2>
+<p>公告板效果就是直接使用公告板来渲染出一定的特殊效果。常规公告板的面方向始终与视线的方向垂直，但是也可以增加其属性设置为不必与视线垂直，此时即相当于在某些位置绘制一个面形出来，这样也可以完成一些特殊的效果，比如静止面上的纹理动画等（这需要引擎支持动态的纹理，比如gif等；或是帧贴图的合并与提取等）。</p>
+<h2 id="-">粒子</h2>
+<p>粒子特效中引擎中最为常见也是必须的一种效果，包括各种灰尘、火焰、烟雾等效果的实现均是由粒子系统来完成。粒子系统是一种过程模型，将造型与动画结合为一个整体，用单个随时间变化的粒子作为场景的基本元素。每个粒子都有自己的生命周期，比如“出生”、&quot;生长&quot;、“死亡”等基本属性。在实现过程中需要采用随机的方法来实现粒子的不确定性，从而增加更为真实的模拟。每个粒子本身的实现又是用公告板的渲染方式并结合不同的Alpha操作来完成。</p>
+<p><img src="http://dl.iteye.com/upload/attachment/0084/4582/b9375038-1df6-3424-a421-da374c48e9f5.png" alt=""></p>
+<h2 id="-">拖尾</h2>
+<p>拖尾效果在动作游戏中比较常见，其一般的实现是在要渲染的模型中设置出一些对应的绑定点来，然后在动画播放的过程中记录这些绑定点的位置，并在其上生成相应的不同类型的连接面生，并以丰富的Alpha操作模型进行渲染而实现。在动画更新的过程中也同时完成这些生成的面片的更新以便实现出动态变化的效果。其通常会结合一定的环境反射或扭曲等来增强其表现力。该特效常见于动作游戏中的刀光或角色的运动中，实现较好可以很大程度上增加引擎的表现力，比如下述战神中武器上面的拖尾效果就很炫丽。</p>
+<p><img src="http://dl.iteye.com/upload/attachment/0084/4584/e080565d-15bd-3b1f-bc6c-853184036b76.png" alt=""></p>
+<h2 id="-">贴花</h2>
+<p>贴花效果严格意义上来说可以并不完全属于特效的范畴，比如可能在场景编辑器中同样需要，因为其不是动态变化的而属于静态场景的一部分。当前的贴花实现既可以用基于前向渲染的传统方式来实现，同样也可以用后处理的方式来实现，不过这就要求引擎使用了延迟渲染的架构，具体差异就跟引擎的细节相关了（之前也有简单介绍的实现）。贴花在游戏中主要使用在一些动态产生的图像或痕迹的表面上，比如射击游戏中的弹孔、走在雪地上的脚印、因攻击而溅到地面上的血迹等各种，这些实现通常也需要与引擎中的逻辑部分相结合从而在特定的场合特定的时间上合理产生以增强表面力。比如下图中就是Ninja Gaiden中的一些Decal使用效果（注意角色身上以及地面上的血渍）：)</p>
+<p><img src="http://dl.iteye.com/upload/attachment/0084/4587/798a8bae-61ab-3924-9196-ccc59dab0ade.png" alt=""></p>
+<h2 id="-">残影</h2>
+<p>残影主要用来表现角色的快速移动效果，而其实现方式既可以用后处理方式也可以用非后处理方式。一般来说使用前向的基于几何实体的实现方式可能得到更好的效果。在后处理实现中主要是利用后备的累积buffer来实现基于屏幕空间的角色累积，其优点是实现效率较高，毕竟是基于图像空间的，但也有一个明显的缺点就是效果不是太好，特别是当摄像机的位置变化较为剧烈时，另外还有就是使用这种方式的话累积出的效果的材质可控性较差，变化不太丰富；另外一个方式就是前向的基于模型渲染的实现，这个通常是将模型进行虚拟的复制然后再下一帧进行还原绘制，这种方法不会受Camera变化的影响，而且由于是直接进行几何体的渲染因而材质的控制就为简单，也使用其效果较好。另外在这种方法中也可以将其与其它的特效相结合，比如使用拖尾对多个残影间进行连接可以得到另外一种更加炫丽的效果。这种效果在最新的Ninja Gaiden3中用得也挺多的，效果也很好看（主角快速攻击时身后的蓝色运动痕迹）</p>
+<p><img src="http://dl.iteye.com/upload/attachment/0084/4590/966e7856-c03b-3e28-b536-3dc6e447d7be.png" alt=""></p>
+<h2 id="-">屏幕特效</h2>
+<p>屏幕特效一般是在后处理过程中施加的一个基于图像空间的用来模拟摄像机上一些效果的操作，比如FPS游戏中弹屏幕眩晕、动作游戏中的屏幕溅血等。这个操作的实现其实还是很简单的，只需在后得理过程中增加个目标贴图的Alpha混合即可，但是比较重要的是控制其基于Alpah的渐变、同引擎中逻辑相结合的触发以及各种状态下触发的随机性控制等，而且还需要美工制作出不错的屏幕以及Alpha通道贴图来供使用。比如下图中的Ninja Gaiden中主角攻击后敌人的血渍屏幕喷溅的效果：</p>
+<p><img src="http://dl.iteye.com/upload/attachment/0084/4592/38431b41-b8a1-3f9f-806e-93d40861528c.png" alt=""></p>
+<p>特效在引擎中的组织与使用的一些注意点：</p>
+<ul>
+<li>特效可以以某类型结点的方式在引擎中管理，且其与其它结点，比如角色的模型应是等价的，同样要参与对应的可见性测试、帧更新等操作。</li>
+<li>基本上分布非后处理特效与后处理特效，这是从特效的实现方式上进行分解，两大类的实现方式也有一定的区别，但是对应的更新、加载及释放等操作区别不大。</li>
+<li>在引擎中需要提供编辑器供美工进行使用，其可以与场景等其它编辑器相互独立，但需要使用统一的引擎框架（包括资源、逻辑的管理，渲染流程等），需要既方便开发同时又方便维护。</li>
+<li>某些特效可能需要与特定的模型进行绑定，而且状态也可能会受这些关联模型的影响，因而在组织场景时就需要注意。</li>
+<li>由于特效中涉及到不可缺少的Alpha混合等操作，因而需要在支持半透明的Pass中完成渲染。针对不同的引擎渲染管线，整个特效部分所处的渲染位置可能有所差别。在传统的前向渲染引擎中没有什么特别之处；在使用延迟渲染或光照的引擎结构中则需要将特效渲染置于一个前向渲染流中来完成。对于后处理特效则需要置于合适的后处理Pass中。</li>
+</ul>
+<p>上述简单介绍了游戏中一些常见特效的实现，原理都比较简单实现起来也不复杂，但最重要的是将这些效果整合到编辑器中，并提供关键属性的调节接口以供美工来进行使用与设计，这样才能在游戏中得到预期的效果。当然，不管何种类型的游戏想要提高体验效果特效是很重要的一部分，除了上述还有很多，有些情况下还需要根据美工人员的需求特别设计相应的实现，这就需要对具体问题进行具体分析。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Game/">Game</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+<!-- Duoshuo Comment BEGIN -->
+  <div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"alexzhang"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- Duoshuo Comment END -->
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:alex-zhang.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a style="color:#258FB8" href="http://chaimzane.iteye.com/" title="Chaimzane's Blog"><b>Chaimzane's Blog</b></a></li>
+</ul>
+</div>
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Game/" style="font-size: NaNpx;">Game</a><a href="/tags/RibbonTrail/" style="font-size: NaNpx;">RibbonTrail</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Alex Zhang
+  
+</div>
+<div class="clearfix"></div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7151646-2', 'alex-zhang.github.io');
+  ga('send', 'pageview');
+
+</script></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
